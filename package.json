@@ -1,0 +1,13 @@
+{
+  "name": "languageTranslation",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node translate.js"
+  },
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "google-translate-api": "^2.2.2"
+  }
+}
