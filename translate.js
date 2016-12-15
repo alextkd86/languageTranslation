@@ -1,13 +1,36 @@
 var express = require('express');
 var app = express(); 
 var bodyparser  = require('body-parser');
+var cors = require('cors');
 //Application use module bodyparser
 app.use(bodyparser.urlencoded({extended: false}));
 //Parser JSON -- APIRest
 app.use(bodyparser.json());
+//enable requests from angular
+app.use(cors());
 //https://www.npmjs.com/package/google-translate-api
 const translate = require('google-translate-api');
+//If you don't use library "CORS"
+/*
+app.use(function (req, res, next) {
 
+    // Website you wish to allow to connect
+    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:4200');
+
+    // Request methods you wish to allow
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+
+    // Request headers you wish to allow
+    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+
+    // Set to true if you need the website to include cookies in the requests sent
+    // to the API (e.g. in case you use sessions)
+    res.setHeader('Access-Control-Allow-Credentials', true);
+
+    // Pass to next layer of middleware
+    next();
+});
+*/
 //POST - From automatic language detection to 'X' language
 app.post('/automaticTranslator', function(req, res){
     //Text to traduce
@@ -15,6 +38,7 @@ app.post('/automaticTranslator', function(req, res){
     //Language to convert to
     var language = req.body.language || "en";
     //Function call Google API
+    console.log(text + "-" +language);
     translate(text, {to: language}).then(response => {
         var traducedObject = {
                 textIn: text,
