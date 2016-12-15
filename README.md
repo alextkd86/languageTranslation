@@ -17,3 +17,7 @@ B) We explicitly introduce the language with which we write.
                       "originalLanguage": "es",         //Language written "text"
                       "finalLanguage": "en"             //Language to translate
                     }   
+					
+					
+					
+DON'T FORGET TO EXECUTE IN CONSOLE ---> npm install
